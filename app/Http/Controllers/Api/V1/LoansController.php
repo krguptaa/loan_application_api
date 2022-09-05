@@ -183,7 +183,7 @@ class LoansController extends APIController
             {
                 return $this->respond([
                     'status' => 1,
-                    'message' => 'All EMIs were paid were you, no EMIs pending!',
+                    'message' => 'All EMIs were paid, no EMIs pending!',
                     'data' => []
                 ]);
             }
@@ -206,18 +206,18 @@ class LoansController extends APIController
                 ]);
             }
 
-           $response =  $this->repository->payLoanEmi($loan);
+           $response =  $this->repository->payLoanEmi($request->all(),$loan);
 
            if($response){
                 return $this->respond([
                     'status' => 1,
-                    'message' => 'Loan applicaton has been approved!',
+                    'message' => 'EMI Paid successfully!!',
                     'data' => []
                 ]);
            }else{
                 return $this->respond([
                     'status' => 0,
-                    'message' => 'Error : Loan approval unsuccessful. Please contact to Administrator',
+                    'message' => 'Error : Unable to Pay EMI. Please contact to Administrator',
                     'data' => []
                 ]);
            }

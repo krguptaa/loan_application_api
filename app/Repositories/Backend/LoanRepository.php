@@ -6,6 +6,7 @@ use App\Exceptions\GeneralException;
 use App\Models\Auth\User;
 use App\Models\Loan;
 use App\Models\PaymentMeta;
+use App\Models\Payment;
 use App\Repositories\BaseRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -112,6 +113,40 @@ class LoanRepository extends BaseRepository
             }
            
         }
+        return false;
+    }
+
+    /**
+     * @param Array $input
+     * @param Object $loan
+     *
+     * @throws \Exception
+     * @throws \Throwable
+     * @return Boolean
+     */
+    public function payLoanEmi($input,$loan){
+
+        $payment = new Payment();
+
+        $payment->payment_status = 1;
+        $payment->payment_meta_id = $loan->id;
+        $payment->amount_received = $input['amount'];
+        $payment->created_by = access()->user()->id;
+
+        if ($payment->save())
+        {
+            $pendingAmount = ( $loan->pending_amount - $loan->installment_amount );
+            $prevPaymentDate = date( 'Y-m-d H:i:s', strtotime( '+7 day' ) );
+            $nextPaymentDate = date( 'Y-m-d H:i:s', strtotime( '+7 day', strtotime( $prevPaymentDate ) ) );
+
+            $metaUpdate = PaymentMeta::where( [ 'id' => $loan->id ] )->update( [ 'status' => 1, 'last_repayment_date' => $prevPaymentDate, 'next_repayment_date' => $nextPaymentDate, 'pending_amount' => $pendingAmount ] );
+
+            if ($metaUpdate)
+            {
+                return true;
+            }
+        }
+
         return false;
     }
 }
