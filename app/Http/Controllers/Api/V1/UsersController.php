@@ -42,7 +42,7 @@ class UsersController extends APIController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function register(Request $request)
     {
         $validation = $this->validateUser($request);
 

@@ -33,7 +33,7 @@
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
         "barryvdh/laravel-ide-helper": "^2.6",
-        "codedungeon/phpunit-result-printer": "^0.26.1",
+        "codedungeon/phpunit-result-printer": "^0.32.0",
         "facade/ignition-code-editor": "^1.0",
         "facade/ignition-self-diagnosis": "^1.0",
         "facade/ignition-tinker-tab": "^1.0",

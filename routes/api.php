@@ -20,6 +20,8 @@ use Illuminate\Http\Request;
 Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], function () {
     Route::group(['prefix' => 'auth'], function () {
         Route::post('login', 'AuthController@login');
+         // Register User
+         Route::post('register', 'UsersController@register');
     });
 
     Route::group(['middleware' => ['jwt.authUser']], function () {
@@ -31,6 +33,8 @@ Route::group(['namespace' => 'Api\V1', 'prefix' => 'v1', 'as' => 'v1.'], functio
         });
         // Users
         Route::resource('users', 'UsersController', ['except' => ['create', 'edit']]);
+
+       
 
         // Loans
         Route::resource('loans', 'LoansController', ['except' => ['create', 'edit']]);

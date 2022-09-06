@@ -62,7 +62,7 @@ class UserRepository extends BaseRepository
         $user->status = 1;         
         $user->confirmation_code = md5(uniqid(mt_rand(), true));
         $user->confirmed = 1;
-        $user->created_by = access()->user()->id;
+        $user->created_by = 1;
 
         return $user;
     }
