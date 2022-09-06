@@ -1,0 +1,1026 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Loan Application",
+		"_postman_id": "a176d903-5ea4-e607-73ab-e6094d9ea51b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = JSON.parse(responseBody);\r",
+							"postman.setEnvironmentVariable(\"token\", \"Bearer \" + jsonData.token);"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "{{site_url}}/api/v1/auth/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"description": "",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "email",
+							"value": "admin@admin.com",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123456",
+							"type": "text"
+						}
+					]
+				},
+				"description": null
+			},
+			"response": [
+				{
+					"id": "2c84e040-4f47-4aea-81a2-3260f1f07165",
+					"name": "Login - Sucess Response",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/auth/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "admin@admin.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": ""
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 12:34:59 GMT, Mon, 05 Sep 2022 12:34:59 GMT",
+							"description": ""
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "58",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "2563",
+					"body": "{\"status\":1,\"message\":\"Login Successfull.\",\"token\":\"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMVwvXC9hcGlcL3YxXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2MjM4MTI5OCwiZXhwIjoxNjYyMzg0ODk4LCJuYmYiOjE2NjIzODEyOTgsImp0aSI6IjdFQ0E1OVhoSGkwWmUxVUEiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.vST6LYFiWd9LXCsxAiiGgXFQiK3jPcAVGRluJej48pw\",\"statusCode\":200,\"data\":{\"id\":1,\"first_name\":\"Kamlesh\",\"last_name\":\"Gupta\",\"email\":\"admin@admin.com\",\"picture\":\"https:\\/\\/www.gravatar.com\\/avatar\\/64e1b8d34f425d19e1ee2ea7236d3028.jpg?s=80&d=mm&r=g\",\"confirmed\":1,\"role\":\"Administrator\",\"permissions\":[],\"status\":1,\"created_at\":\"2022-09-05T11:57:50+00:00\",\"updated_at\":\"2022-09-05T11:57:50+00:00\"}}"
+				},
+				{
+					"id": "9f8f3b7b-ceb3-4a36-a9e6-3b6860d0a9de",
+					"name": "Login - Error Response",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/auth/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "rahul@gmail.com",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123456",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"status": "Unprocessable Entity",
+					"code": 422,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": ""
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 13:07:38 GMT, Mon, 05 Sep 2022 13:07:38 GMT",
+							"description": ""
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "58",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "1271",
+					"body": "{\"error\":{\"message\":\"This user is no more exist in system. Please contact to administrator!\",\"status_code\":422}}"
+				}
+			]
+		},
+		{
+			"name": "Logout",
+			"request": {
+				"url": "{{site_url}}/api/v1/auth/logout",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": [
+				{
+					"id": "f4cf1251-d2ad-4f4e-82a3-0d5dfaccf3e1",
+					"name": "Logout - Success",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/auth/logout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": ""
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 13:02:31 GMT, Mon, 05 Sep 2022 13:02:31 GMT",
+							"description": ""
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "57",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "2242",
+					"body": "{\"status\":1,\"message\":\"Successfully logged out.\",\"data\":[],\"statusCode\":200}"
+				}
+			]
+		},
+		{
+			"name": "Get the User Details",
+			"request": {
+				"url": "{{site_url}}/api/v1/users/1",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}"
+					}
+				],
+				"body": {},
+				"description": null
+			},
+			"response": [
+				{
+					"id": "7aa05b50-2bbe-4680-841d-05b4d5c8e748",
+					"name": "Get the User Details - Response",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/users/1",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": "",
+								"warning": ""
+							}
+						],
+						"body": {}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": ""
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": ""
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": ""
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 12:35:06 GMT, Mon, 05 Sep 2022 12:35:06 GMT",
+							"description": ""
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": ""
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": ""
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "57",
+							"description": ""
+						}
+					],
+					"cookie": [],
+					"responseTime": "2747",
+					"body": "{\"data\":{\"id\":1,\"first_name\":\"Kamlesh\",\"last_name\":\"Gupta\",\"email\":\"admin@admin.com\",\"picture\":\"https:\\/\\/www.gravatar.com\\/avatar\\/64e1b8d34f425d19e1ee2ea7236d3028.jpg?s=80&d=mm&r=g\",\"confirmed\":1,\"role\":\"Administrator\",\"permissions\":[],\"status\":1,\"created_at\":\"2022-09-05T11:57:50+00:00\",\"updated_at\":\"2022-09-05T11:57:50+00:00\"}}"
+				}
+			]
+		},
+		{
+			"name": "Create a New Account",
+			"request": {
+				"url": "{{site_url}}/api/v1/auth/register",
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "rahul",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Gupta",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "rahul@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": null
+			},
+			"response": [
+				{
+					"id": "795336db-b8eb-4582-be88-2d23e40d387f",
+					"name": "Create a New Account - Success",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/users",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "rahul",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Gupta",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rahul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 13:11:41 GMT, Mon, 05 Sep 2022 13:11:41 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "58",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 1116,
+					"body": "{\"data\":{\"id\":6,\"first_name\":\"rahul\",\"last_name\":\"Gupta\",\"email\":\"rahul@gmail.com\",\"confirmed\":1,\"role\":\"Administrator\",\"permissions\":[],\"status\":1,\"created_at\":\"2022-09-05T13:11:41+00:00\",\"updated_at\":\"2022-09-05T13:11:41+00:00\"}}"
+				}
+			]
+		},
+		{
+			"name": "Apply New Loan",
+			"request": {
+				"url": "{{site_url}}/api/v1/loans/apply",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "loan_amt",
+							"value": "1000",
+							"type": "text"
+						},
+						{
+							"key": "loan_tenor",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "529abe65-6c3a-4ef5-b75b-ac959694704d",
+					"name": "Apply New Loan - Success",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/loans/apply",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "loan_amt",
+									"value": "1000",
+									"type": "text"
+								},
+								{
+									"key": "loan_tenor",
+									"value": "2",
+									"type": "text"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 17:21:17 GMT, Mon, 05 Sep 2022 17:21:17 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "58",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 957,
+					"body": "{\"data\":{\"id\":6,\"user_id\":1,\"customer_name\":\"Kamlesh Gupta\",\"amount\":\"1000.00\",\"tenor \":2,\"status\":0,\"created_at\":\"2022-09-05T17:21:17+00:00\",\"updated_at\":\"2022-09-05T17:21:17+00:00\"}}"
+				}
+			]
+		},
+		{
+			"name": "Approve Loan",
+			"request": {
+				"url": "{{site_url}}/api/v1/loans/approve",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "loan_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "610c17b7-854a-41dc-82b3-566fc69785ef",
+					"name": "Approve Loan - Success",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/loans/approve",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "loan_id",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 18:17:21 GMT, Mon, 05 Sep 2022 18:17:21 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "59",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 1324,
+					"body": "{\"status\":1,\"message\":\"Loan applicaton has been approved!\",\"data\":[]}"
+				}
+			]
+		},
+		{
+			"name": "List all Loans",
+			"request": {
+				"url": "{{site_url}}/api/v1/loans",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMVwvXC9hcGlcL3YxXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2MjQwNzAwNCwiZXhwIjoxNjYyNDEwNjA0LCJuYmYiOjE2NjI0MDcwMDQsImp0aSI6InV0U0lzOFZHZEZXMWk4Z0YiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.SkAgSNLKXhB7xnUG_Dgfe34eaJ750s9jV89yc2SjDoI",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "rahul",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Gupta",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "rahul@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": [
+				{
+					"id": "5db1acc7-e383-40a5-9e56-e4ff7a5da853",
+					"name": "List all Loans - Success",
+					"originalRequest": {
+						"url": "{{site_url}}/api/v1/loans",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMVwvXC9hcGlcL3YxXC9hdXRoXC9sb2dpbiIsImlhdCI6MTY2MjQwNzAwNCwiZXhwIjoxNjYyNDEwNjA0LCJuYmYiOjE2NjI0MDcwMDQsImp0aSI6InV0U0lzOFZHZEZXMWk4Z0YiLCJzdWIiOjEsInBydiI6IjEzZThkMDI4YjM5MWYzYjdiNjNmMjE5MzNkYmFkNDU4ZmYyMTA3MmUifQ.SkAgSNLKXhB7xnUG_Dgfe34eaJ750s9jV89yc2SjDoI",
+								"description": "",
+								"warning": ""
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "first_name",
+									"value": "rahul",
+									"type": "text"
+								},
+								{
+									"key": "last_name",
+									"value": "Gupta",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "rahul@gmail.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"_postman_previewtype": "text",
+					"header": [
+						{
+							"name": "cache-control",
+							"key": "cache-control",
+							"value": "no-cache, private",
+							"description": "Tells all caching mechanisms from server to client whether they may cache this object. It is measured in seconds"
+						},
+						{
+							"name": "connection",
+							"key": "connection",
+							"value": "close",
+							"description": "Options that are desired for the connection"
+						},
+						{
+							"name": "content-type",
+							"key": "content-type",
+							"value": "application/json",
+							"description": "The mime type of this content"
+						},
+						{
+							"name": "date",
+							"key": "date",
+							"value": "Mon, 05 Sep 2022 17:41:48 GMT, Mon, 05 Sep 2022 17:41:48 GMT",
+							"description": "The date and time that the message was sent"
+						},
+						{
+							"name": "host",
+							"key": "host",
+							"value": "localhost:8001",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-powered-by",
+							"key": "x-powered-by",
+							"value": "PHP/7.4.29",
+							"description": "Specifies the technology (ASP.NET, PHP, JBoss, e.g.) supporting the web application (version details are often in X-Runtime, X-Version, or X-AspNet-Version)"
+						},
+						{
+							"name": "x-ratelimit-limit",
+							"key": "x-ratelimit-limit",
+							"value": "60",
+							"description": "Custom header"
+						},
+						{
+							"name": "x-ratelimit-remaining",
+							"key": "x-ratelimit-remaining",
+							"value": "59",
+							"description": "Custom header"
+						}
+					],
+					"cookie": [],
+					"responseTime": 1584,
+					"body": "{\"data\":[{\"id\":5,\"user_id\":1,\"customer_name\":\"Kamlesh Gupta\",\"amount\":\"1000.00\",\"tenor \":2,\"status\":0,\"created_at\":\"2022-09-05T17:20:50+00:00\",\"updated_at\":\"2022-09-05T17:20:50+00:00\"},{\"id\":6,\"user_id\":1,\"customer_name\":\"Kamlesh Gupta\",\"amount\":\"1000.00\",\"tenor \":2,\"status\":0,\"created_at\":\"2022-09-05T17:21:17+00:00\",\"updated_at\":\"2022-09-05T17:21:17+00:00\"}],\"links\":{\"first\":\"http:\\/\\/localhost:8001\\/\\/api\\/v1\\/loans?page=1\",\"last\":\"http:\\/\\/localhost:8001\\/\\/api\\/v1\\/loans?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"path\":\"http:\\/\\/localhost:8001\\/\\/api\\/v1\\/loans\",\"per_page\":25,\"to\":2,\"total\":2},\"status\":1,\"message\":\"\",\"statusCode\":200}"
+				}
+			]
+		},
+		{
+			"name": "Get Single Loans Details",
+			"request": {
+				"url": "{{site_url}}/api/v1/loans/5",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "first_name",
+							"value": "rahul",
+							"type": "text"
+						},
+						{
+							"key": "last_name",
+							"value": "Gupta",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "rahul@gmail.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "1234",
+							"type": "text"
+						},
+						{
+							"key": "",
+							"value": "",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Pay Loan",
+			"request": {
+				"url": "{{site_url}}/api/v1/loans/payloan",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "loan_id",
+							"value": "5",
+							"type": "text"
+						},
+						{
+							"key": "amount",
+							"value": "500",
+							"type": "text"
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
